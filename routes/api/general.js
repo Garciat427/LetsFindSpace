@@ -1,11 +1,10 @@
 const router = require("express").Router();
-const dbController = require("../../controllers/dbController");
+const generalController = require("../../controllers/generalController");
 
 
 // Matches with "/api/general"
 
-router.route("/test")
-  .get(dbController.test)
-  .post(dbController.test);
+router.route("/getCo")
+  .post(generalController.getCo);
 
 module.exports = router;
