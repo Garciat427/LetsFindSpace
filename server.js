@@ -1,22 +1,29 @@
+/* Server Dependencies */
 const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 8000;
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
+const routes = require("./routes"); //Load Routes from folder
+
+const path = require("path"); 
+const PORT = process.env.PORT || 8000; //Run Server on Port 8000
+const app = express(); //Init Express to app
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.post("/addNumbers", (req, res) => {
-  console.log(req.body);
-  var test = req.body.arr1;
-  
-  res.json({ test: test});
+app.use(routes);
+
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+/* ---------------Startup Sequence--------------- */
+console.log("-----------Startup log------------\n")
+app.listen(PORT, () => {
+  console.log(`====> API server now running on port ${PORT} <====`+"\n\n");
+  console.log("-----------End of Startup log------------\n")
 });
