@@ -1,8 +1,14 @@
+//React Dependencies
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+
+//MDB Bootstrap Dependencies
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap-css-only/css/bootstrap.min.css";
+import "mdbreact/dist/css/mdb.css";
+
+//Component Dependencies
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(<App />, document.getElementById("root"));
-registerServiceWorker();
+
