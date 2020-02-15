@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const generalController = require("../../controllers/dbController");
+const dbController = require("../../controllers/dbController");
 
 
 // Matches with "/api/general"
