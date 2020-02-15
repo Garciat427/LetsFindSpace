@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const UsersSchema = new Schema({
     name: String,
-    code_id: Number
+    code: Number
 });
 
 const Users = mongoose.model('users', UsersSchema);
