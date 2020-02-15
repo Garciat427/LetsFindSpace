@@ -11,10 +11,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.post("/addNumbers", (req, res) => {
-  var numOne = req.body.numOne;
-  var numTwo = req.body.numTwo;
-  var sum = parseInt(numOne) + parseInt(numTwo);
-  res.json({ sum: "hi", hamada: "hello" });
+  console.log(req.body);
+  var test = req.body.arr1;
+  
+  res.json({ test: test});
 });
 
 app.listen(PORT, function() {
