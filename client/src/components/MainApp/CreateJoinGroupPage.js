@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import {
   MDBCollapse,
+  MDBInputGroup,
+  MDBInput,
   MDBMask,
   MDBRow,
   MDBCol,
@@ -11,7 +13,7 @@ import {
   MDBFormInline
 } from "mdbreact";
 
-class Home extends Component {
+class CreateJoinGroup extends Component {
   render() {
     const navStyle = { marginTop: "4rem" };
     const overlay = (
@@ -34,30 +36,22 @@ class Home extends Component {
                     className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-white"
                     style={{ textShadow: "1px 1px 5px gray" }}
                   >
-                    Meetup.Space
+                    Join Group Page
                   </h1>
 
-                  <h5 className="pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5">
-                    {" "}
-                    Meet Me Halfway{" "}
-                  </h5>
+                  <MDBCol md="4" className="mx-auto">
+                    <MDBInput hint="Enter your name" />
+                    <MDBInput hint="Enter your location" />
+                    <MDBInput hint="Enter your group code" />
 
-                  <MDBBtn
-                    rounded
-                    className="btn-purple"
-                    onClick={this.props.renderCreateGroup}
-                  >
-                    Create Group
-                  </MDBBtn>
-
-                  <MDBBtn
-                    outline
-                    color="purple"
-                    rounded
-                    onClick={this.props.renderJoinGroup}
-                  >
-                    Join Group
-                  </MDBBtn>
+                    <MDBBtn
+                      rounded
+                      className="btn-purple"
+                      onClick={this.props.renderCreateGroup}
+                    >
+                      Join Group
+                    </MDBBtn>
+                  </MDBCol>
                 </MDBCol>
               </MDBRow>
             </MDBContainer>
@@ -68,4 +62,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default CreateJoinGroup;
