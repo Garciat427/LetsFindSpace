@@ -4,8 +4,8 @@ const dbController = require("../../controllers/dbController");
 
 // Matches with "/api/db"
 
-router.route("/createCode")
-  .get(dbController.createCode)
-  .post(dbController.createCode);
+router.route("/createGroup")
+  .get(dbController.createGroup)
+  .post(dbController.createGroup);
 
 module.exports = router;
