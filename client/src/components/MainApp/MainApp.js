@@ -18,10 +18,18 @@ class MainApp extends Component {
       
 
    };
+   
+   //---Homepage Event handlers---
 
-   submitHandler = () => {
+   //Create Group Handler
+   renderCreateGroup = () => {
       this.setState({renderHome:false})
       this.setState({renderCreateGroup:true})
+   }
+
+   renderJoinGroup = () => {
+      this.setState({renderHome:false})
+      this.setState({renderJoinGroup:true})
    }
 
 
@@ -29,7 +37,8 @@ class MainApp extends Component {
       if (this.state.renderHome) {
          return (
             <HomePage 
-               homePageBtn = {this.submitHandler}
+               renderCreateGroup = {this.renderCreateGroup}
+               renderJoinGroup = {this.renderJoinGroup}
             />
          );
       } else {
