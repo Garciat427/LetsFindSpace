@@ -13,7 +13,8 @@ module.exports = {
          }
 
          var newCode = new Codes({
-            code: generatedCode
+            code: generatedCode,
+            locked: false
          });
          newCode.save().then(() => {
             // Create user and store id of newcode
@@ -30,7 +31,22 @@ module.exports = {
 
    /* ------------------ Joining a group ------------------- */
    joinGroup: (req, res) => {
-
+      var getName = req.body.name;
+      var getCode = req.body.code;
+      Codes.find({ code: getCode, locked: false }, 'code', function (err, docs) {
+         if (docs != 0) {
+            Users.find({ code: getCode }, 'name', function (err2, docs2) {
+               var newUser = new Users({
+                  name: getName,
+                  code: getCode
+               })
+               newUser.save();
+               res.json(docs2);
+            })
+         } else {
+            res.json([]);
+         }
+      })
    }
 }
 
