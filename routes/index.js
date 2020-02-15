@@ -1,6 +1,7 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
+<<<<<<< HEAD
 //const auth = require("./authRoutes")
 
 // API Routes (For MongoDB Routes)
@@ -15,3 +16,10 @@ router.use(function(req, res) {
 });
 
 module.exports = router;
+=======
+
+router.route("/addNumbers")
+  .post(
+     
+  );
+>>>>>>> a5b5d6d2e90caa42a4cf350a5c598d11c56cf638
