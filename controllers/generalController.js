@@ -1,4 +1,3 @@
-
 module.exports = { 
 
     /* ------------------ Customer Types (Get and Post) ------------------ */
@@ -30,6 +29,34 @@ module.exports = {
        console.log(newCo);
 
        res.json({coordinates: newCo});
+    }
+
+    ,getGeo: (req, res) => {
+
+      var adrs = req.body.adrs;
+      var adrsArr = adrs.split(" ");
+      var arrLen = adrsArr.length;
+      var i;
+      var link = "https://maps.googleapis.com/maps/api/geocode/json?address=";//1600+Amphitheatre+Parkway,+Mountain+View,+CA//&key=YOUR_API_KEY"
+      for (i = 0; i < arrLen; i++) {
+         console.log(adrsArr[i]);
+         if (i == arrLen-1) {
+            link += adrsArr[i];
+         } else {
+            link += adrsArr[i] + "+";
+         }
+      }
+
+      link += "&key=AIzaSyBOPU0UEp-54JoPFiG3KgcrwxcczUiYNQI";
+
+      //jQuery.getJSON(link, function(data) {
+      //data is the JSON string
+      //});
+
+      console.log(link);
+
+      res.json({adrs:adrsArr});
+
     }
  
  }
