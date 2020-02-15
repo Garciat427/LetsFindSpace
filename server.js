@@ -11,10 +11,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.post("/addNumbers", (req, res) => {
+  var numOne = req.body.numOne;
   console.log(req.body);
-  var test = req.body.arr1;
-  
-  res.json({ test: test});
+  res.json({ numOne: numOne});
 });
 
 app.listen(PORT, function() {
