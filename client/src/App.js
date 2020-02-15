@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar.component";
 import "./App.css";
+import "./components/MainApp/MainApp.js"
+import MainApp from "./components/MainApp/MainApp"
+
 
 class App extends Component {
   constructor() {
@@ -18,16 +21,11 @@ class App extends Component {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
             <Route path="/">
-              <Home />
+              <MainApp />
             </Route>
           </Switch>
+
         </div>
       </Router>
     );
