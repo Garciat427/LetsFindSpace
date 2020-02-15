@@ -24,7 +24,7 @@ app.get("*", (req, res) => {
 /* ---------------Startup Sequence--------------- */
 console.log("-----------Startup log------------\n")
 //Connect to MongoDB then startup server
-mongoose.connect('mongodb+srv://admin:stWNC101@cluster0-ow1oo.gcp.mongodb.net/test?retryWrites=true&w=majority', ()=>{
+mongoose.connect('mongodb+srv://admin:stWNC101@cluster0-ow1oo.gcp.mongodb.net/halfway?retryWrites=true&w=majority', ()=>{
   console.log('\n\n====> Connected to MongoDB <====\n\n')
   //Set server to start Listening
   app.listen(PORT, () => {
