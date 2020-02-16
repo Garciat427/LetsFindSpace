@@ -6,7 +6,8 @@ import {
    MDBCol,
    MDBBtn,
    MDBView,
-   MDBContainer
+   MDBContainer,
+   MDBTypography
 } from "mdbreact";
 
 import GoogleMapsProp from "./GoogleMapsProp"
@@ -22,10 +23,20 @@ class MapPage extends Component {
                   <GoogleMapsProp
                      centerLatitude={this.props.centerLatitude}
                      centerLongitude={this.props.centerLongitude}
+                     currentUserArray={this.props.currentUserArray}
+                     placeName={this.props.placeName}
+                     placeAddress={this.props.placeAddress}
                   />
                   <MDBContainer>
-
-                     <MDBRow style={{ paddingTop: "65%" }}>
+                     <MDBRow>
+                        <MDBCol>
+                           <MDBTypography note noteColor='primary' noteTitle='Group Code: ' className="text-center">
+                              {this.props.currentGroupCode}
+                           </MDBTypography>
+                           <h1></h1>
+                        </MDBCol>
+                     </MDBRow>
+                     <MDBRow style={{ paddingTop: "55%" }}>
                         <MDBCol md="12">
                            {/* Buttons for finding midpoint */}
                            <MDBRow >
@@ -33,11 +44,14 @@ class MapPage extends Component {
                               <MDBCol md="4" className="mx-auto text-center" >
                                  <MDBAnimation type="fadeInDown" delay="1.5s">
                                     <MDBBtn
+                                       hidden={!this.props.userTypeIsOwner}
+                                       disabled={!this.props.userTypeIsOwner}
                                        gradient="purple"
                                        href="#"
-                                       name=""
+                                       name="cafe"
                                        rounded
-                                    >MDBBtn</MDBBtn>
+                                       onClick={this.props.handleMidpointSearch}
+                                    >Find Coffee Shops</MDBBtn>
                                  </MDBAnimation>
                               </MDBCol>
 
@@ -45,11 +59,14 @@ class MapPage extends Component {
                               <MDBCol md="4" className="mx-auto text-center">
                                  <MDBAnimation type="fadeInDown" delay="2s">
                                     <MDBBtn
+                                       hidden={!this.props.userTypeIsOwner}
+                                       disabled={!this.props.userTypeIsOwner}
                                        gradient="purple"
                                        href="#"
-                                       name=""
+                                       name="park"
                                        rounded
-                                    >MDBBtn</MDBBtn>
+                                       onClick={this.props.handleMidpointSearch}
+                                    >Find Parks</MDBBtn>
                                  </MDBAnimation>
                               </MDBCol>
 
@@ -57,14 +74,38 @@ class MapPage extends Component {
                               <MDBCol md="4" className="mx-auto text-center">
                                  <MDBAnimation type="fadeInDown" delay="2.5s">
                                     <MDBBtn
+                                       hidden={!this.props.userTypeIsOwner}
+                                       disabled={!this.props.userTypeIsOwner}
                                        gradient="purple"
                                        href="#"
-                                       name=""
+                                       name="library"
                                        rounded
-                                    >MDBBtn</MDBBtn>
+                                       onClick={this.props.handleMidpointSearch}
+                                    >Find Library</MDBBtn>
                                  </MDBAnimation>
                               </MDBCol>
 
+                           </MDBRow>
+
+                           {/* Buttons for finding midpoint */}
+                           <MDBRow className="pt-2" >
+                              <MDBCol md="2" />
+
+                              <MDBCol md="8" className="mx-auto text-center">
+
+                                 <MDBAnimation type="fadeInUp" delay="3s">
+                                    <MDBBtn
+
+                                       gradient="aqua"
+                                       href="#"
+                                       name=""
+                                       rounded
+                                       onClick={this.props.RefreshBtnClickEvent}
+                                    >Refresh</MDBBtn>
+                                 </MDBAnimation>
+                              </MDBCol>
+
+                              <MDBCol md="2" />
                            </MDBRow>
 
                         </MDBCol>

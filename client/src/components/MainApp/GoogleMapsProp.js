@@ -1,46 +1,85 @@
 import React, { Component } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper, Polygon } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 const style = {
    width: '100%',
    height: '100%'
 }
-const triangleCoords = [
-   { lat: 25.774, lng: -80.190 },
-   { lat: 18.466, lng: -66.118 },
-   { lat: 32.321, lng: -64.757 },
-   { lat: 25.774, lng: -80.190 }
-];
+
 
 export class MapContainer extends Component {
 
+   state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+   };
+
+   onMarkerClick = (props, marker, e) =>
+      this.setState({
+         selectedPlace: props,
+         activeMarker: marker,
+         showingInfoWindow: true
+      });
+
+   onMapClicked = (props) => {
+      if (this.state.showingInfoWindow) {
+         this.setState({
+            showingInfoWindow: false,
+            activeMarker: null
+         })
+      }
+   };
+
    render() {
-      console.log(this.props)
       return (
          <Map
+            onClick={this.onMapClicked}
             google={this.props.google}
             zoom={14}
             style={style}
             initialCenter={{
-               
                lat: this.props.centerLatitude,
                lng: this.props.centerLongitude
             }}
          >
-            <Polygon
-               paths={triangleCoords}
-               strokeColor="#0000FF"
-               strokeOpacity={0.8}
-               strokeWeight={2}
-               fillColor="#0000FF"
-               fillOpacity={0.1} />
-            <Marker
-               name={'uOFt sG'}
-               position={{ lat: 43.664395, lng: -79.399427 }} />
-            <Marker />
 
-            <InfoWindow onClose={this.onInfoWindowClose}>
+            <Marker
+               name={this.props.placeName}
+               value={this.props.placeAddress}
+               position={{
+                  lat: this.props.centerLatitude,
+                  lng: this.props.centerLongitude
+               }}
+               onClick={this.onMarkerClick}
+
+            />
+
+            {console.log(this.props.currentUserArray)}
+            {this.props.currentUserArray.map((currentUser) =>
+               <Marker
+                  value=""
+                  onClick={this.onMarkerClick}
+                  key={currentUser._id}
+                  name={currentUser.name}
+                  title={currentUser.name}
+                  position={{
+                     lat: currentUser.location.lat,
+                     lng: currentUser.location.lng
+                  }}
+                  icon={{
+                     url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+                  }}
+               />
+            )}
+
+
+
+            <InfoWindow
+               marker={this.state.activeMarker}
+               visible={this.state.showingInfoWindow}>
                <div>
-                  <h1></h1>
+                  <h3>{this.state.selectedPlace.name}</h3>
+                  <h5>{this.state.selectedPlace.value}</h5>
                </div>
             </InfoWindow>
          </Map>

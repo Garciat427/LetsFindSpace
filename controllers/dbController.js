@@ -110,6 +110,38 @@ module.exports = {
           });
         }
       });
-    });
+    });    
+  },
+
+  findNearestPlace: (req, res) => {
+    console.log(req.body)
+    var longitude = req.body.lat;
+    var latitude = req.body.lng;
+    var areaType = req.body.search;
+    var groupNumber = req.body.code;
+    var apiLink =
+      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+      longitude +
+      "," +
+      latitude +
+      "&rankby=distance&type=" +
+      areaType +
+      "&key=AIzaSyBOPU0UEp-54JoPFiG3KgcrwxcczUiYNQI";
+    console.log(apiLink);
+    fetch(apiLink).then(response => response.json()).then(data => {
+      var newMeetingPlace = new MeetingPlace({
+        code: groupNumber,
+        location: data.results[0].geometry.location
+      })
+      newMeetingPlace.save().then(() => {
+        let tempObj = {
+          location: data.results[0].geometry.location,
+          name: data.results[0].name,
+          address: data.results[0].vicinity
+        }
+        res.json(tempObj)
+      })
+    })
   }
 };
+

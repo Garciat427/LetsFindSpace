@@ -67,15 +67,14 @@ module.exports = {
   },
 
   getMidpoint: (req, res) => {
+    
     var code = req.body.code;
     var midpoint;
 
     users.find({ code: code }, "location", function(err, docs) {
       if (docs.length > 1) {
-        //console.log(docs[0].location.lat);
         midpoint = getCo(docs);
         MeetingPlace.find({ code: code }, (err, result) => {
-          console.log(result[0].code);
           if (result.length > 0) {
             MeetingPlace.findOneAndUpdate(
               { code: result[0].code },

@@ -9,7 +9,7 @@ import {
   MDBContainer
 } from "mdbreact";
 
-class CreateJoinPage extends Component {
+class JoinPage extends Component {
   render() {
     return (
       <>
@@ -56,7 +56,7 @@ class CreateJoinPage extends Component {
                     <MDBBtn
                       rounded
                       className="btn-purple"
-                      onClick={this.props.submitCreateGroupPage}
+                      onClick={this.props.submitJoinGroupPage}
                     >
                       Join Your Group
                     </MDBBtn>
@@ -71,4 +71,4 @@ class CreateJoinPage extends Component {
   }
 }
 
-export default CreateJoinPage;
+export default JoinPage;
