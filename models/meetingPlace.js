@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 // Create schema and model
 
 const MeetingPlaceSchema = new Schema({
+  code: Number,
   lat: Number,
   lng: Number
 });

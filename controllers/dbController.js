@@ -1,5 +1,6 @@
 const Users = require("../models/users");
 const Codes = require("../models/codes");
+const MeetingPlace = require("../models/meetingPlace");
 const fetch = require("node-fetch");
 const generalController = require("../controllers/generalController");
 
@@ -93,8 +94,22 @@ module.exports = {
   refreshGroup: (req, res) => {
     var getCode = req.body.code;
 
-    Users.find({ code: getCode }, function (err, docs) {
-      res.json(docs);
+    Users.find({ code: getCode }, function(err, result) {
+      var users = result;
+
+      MeetingPlace.find({ code: getCode }).then(result => {
+        if (result.length > 0) {
+          res.json({
+            users: users,
+            meetingPlace: result
+          });
+        } else {
+          res.json({
+            users: users,
+            meetingPlace: null
+          });
+        }
+      });
     });
   }
 };
