@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 
 const MeetingPlaceSchema = new Schema({
   code: Number,
-  lat: Number,
-  lng: Number
+  location: Object
 });
 
 const MeetingPlace = mongoose.model("meetingPlace", MeetingPlaceSchema);

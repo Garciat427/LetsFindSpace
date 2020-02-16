@@ -1,10 +1,8 @@
 const router = require("express").Router();
 const generalController = require("../../controllers/generalController");
 
-router.route("/getGeo")
-   .post(generalController.getGeo);
+router.route("/getGeo").post(generalController.getGeo);
 
-router.route("/midpoint")
-   .post(generalController.midpoint);
-   
+router.route("/getMidpoint").post(generalController.getMidpoint);
+
 module.exports = router;

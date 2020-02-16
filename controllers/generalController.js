@@ -2,36 +2,37 @@
 const fetch = require("node-fetch");
 const Codes = require("../models/codes");
 const users = require("../models/users");
+const MeetingPlace = require("../models/meetingPlace");
 
-const getCo = function (coordinates) {
-   //console.log(req.body.test)
-   //res.json({"test":true})
+const getCo = function(coordinates) {
+  //console.log(req.body.test)
+  //res.json({"test":true})
 
-   //precond: coordinates given array is zero or >1
+  //precond: coordinates given array is zero or >1
 
-   //var coordinates = req.body.coordinates;
-   var newCo;
-   var coLen = coordinates.length;
-   var coX;
-   var coY;
-   var i;
-   if (coLen > 1) {
-     coX = coordinates[0].location.lat;
-     coY = coordinates[0].location.lng;
-     for (i = 1; i < coLen; i++) {
-       coX += coordinates[i].location.lat;
-       coY += coordinates[i].location.lng;
-     }
-     newCo = [{ lat: coX / coLen, lng: coY / coLen }];
-   } else {
-     console.log("The List is empty or has only 1 coordinate");
-   }
+  //var coordinates = req.body.coordinates;
+  var newCo;
+  var coLen = coordinates.length;
+  var coX;
+  var coY;
+  var i;
+  if (coLen > 1) {
+    coX = coordinates[0].location.lat;
+    coY = coordinates[0].location.lng;
+    for (i = 1; i < coLen; i++) {
+      coX += coordinates[i].location.lat;
+      coY += coordinates[i].location.lng;
+    }
+    newCo = [{ lat: coX / coLen, lng: coY / coLen }];
+  } else {
+    console.log("The List is empty or has only 1 coordinate");
+  }
 
-   //console.log(newCo);
+  //console.log(newCo);
 
-   //res.json({ coordinates: newCo });
-   return newCo;
- };
+  //res.json({ coordinates: newCo });
+  return newCo;
+};
 module.exports = {
   /* ------------------ Customer Types (Get and Post) ------------------ */
   //Get CusType(Find all Types)
@@ -64,20 +65,46 @@ module.exports = {
         res.json(data.results[0].geometry.location);
       });
   },
-  midpoint: (req, res) => {
-     var code = req.body.code;
-     var midpoint;
 
-     users.find({code: code}, "location", function(err, docs) {
-        if (docs.length > 1) {
-            //console.log(docs[0].location.lat);
-            midpoint = getCo(docs);
-            res.json({midpoint:midpoint});
-        } else {
-           res.json({
-              message: "Not enough users to find the mid point"
-           });
-        }
-     });
-   }
+  getMidpoint: (req, res) => {
+    var code = req.body.code;
+    var midpoint;
+
+    users.find({ code: code }, "location", function(err, docs) {
+      if (docs.length > 1) {
+        //console.log(docs[0].location.lat);
+        midpoint = getCo(docs);
+        MeetingPlace.find({ code: code }, (err, result) => {
+          console.log(result[0].code);
+          if (result.length > 0) {
+            MeetingPlace.findOneAndUpdate(
+              { code: result[0].code },
+              { $set: { location: midpoint } },
+              { new: true }
+            ).then(result => {
+              res.json(result);
+            });
+          } else {
+            var meetingPlace = new MeetingPlace({
+              code: code,
+              location: midpoint
+            });
+            meetingPlace
+              .save()
+              .then(newMeetingPlace => res.json(newMeetingPlace));
+          }
+        });
+      } else {
+        res.json({
+          message: "Not enough users to find the mid point"
+        });
+      }
+
+      if (err) {
+        res.json({
+          message: "error"
+        });
+      }
+    });
+  }
 };
