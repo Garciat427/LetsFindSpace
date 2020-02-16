@@ -9,6 +9,7 @@ import {
    MDBContainer,
    MDBTypography
 } from "mdbreact";
+import gradientImg from "./gradient2.png"
 
 import GoogleMapsProp from "./GoogleMapsProp"
 
@@ -17,7 +18,7 @@ class MapPage extends Component {
       return (
          <div>
             <MDBView
-               src={`https://mdbootstrap.com/img/Photos/Others/gradient2.png`}
+               src={gradientImg}
             >
                <MDBMask className="rgba-purple-slight d-flex justify-content-center">
                   <GoogleMapsProp

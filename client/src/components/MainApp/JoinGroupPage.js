@@ -8,20 +8,21 @@ import {
   MDBView,
   MDBContainer
 } from "mdbreact";
+import gradientImg from "./gradient2.png"
 
 class JoinPage extends Component {
   render() {
     return (
       <>
         <MDBView
-          src={`https://mdbootstrap.com/img/Photos/Others/gradient2.png`}
+          src={gradientImg}
         >
           <MDBMask className="rgba-purple-slight d-flex justify-content-center align-items-center">
             <MDBContainer>
               <MDBRow>
                 <MDBCol md="12" className="mb-4 text-center">
                   <h1
-                    className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-white"
+                    className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-black"
                     style={{ textShadow: "1px 1px 5px gray" }}
                   >
                     Join Group
