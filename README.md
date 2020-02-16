@@ -6,7 +6,7 @@ Lets Find Space is a web application that allows users to create and join groups
 
 This application operates on Node.js for backend integrated with MongoDB and React for frontend. It uses advanced Geocoding and place-finding based on a user's current location through various APIs offered by Google Maps Platform.
 
-The optimized meeting location is calculated through the use of algebraic and geometric formulas and then returned back to Google's API which finds the most suitable meeting place based on users' preferences (Coffee Shops, Restaurants, etc..) 
+The optimized meeting location is calculated through the use of algebraic and geometric formulas and then returned back to Google's API which finds the most suitable meeting place based on users' preferences (Coffeeshops, Restaurants, etc..) 
 
 ## Starting the app locally
 
