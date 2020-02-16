@@ -2,8 +2,10 @@
   "name": "mern",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:8000/",
   "dependencies": {
+    "axios": "^0.19.2",
+    "google-maps-react": "^2.0.2",
     "mdbreact": "git+https://oauth2:R691f-rKGoi45YNNKsDV@git.mdbootstrap.com/mdb/react/re-pro.git",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

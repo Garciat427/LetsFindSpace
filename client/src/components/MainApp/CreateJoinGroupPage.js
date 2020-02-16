@@ -1,28 +1,16 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import {
-  MDBCollapse,
-  MDBInputGroup,
   MDBInput,
   MDBMask,
   MDBRow,
   MDBCol,
   MDBBtn,
   MDBView,
-  MDBContainer,
-  MDBFormInline
+  MDBContainer
 } from "mdbreact";
 
-class CreateJoinGroup extends Component {
+class CreateJoinPage extends Component {
   render() {
-    const navStyle = { marginTop: "4rem" };
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.handleTogglerClick}
-      />
-    );
     return (
       <>
         <MDBView
@@ -36,20 +24,41 @@ class CreateJoinGroup extends Component {
                     className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-white"
                     style={{ textShadow: "1px 1px 5px gray" }}
                   >
-                    Join Group Page
+                    Join Group
                   </h1>
 
                   <MDBCol md="4" className="mx-auto">
-                    <MDBInput hint="Enter your name" />
-                    <MDBInput hint="Enter your location" />
-                    <MDBInput hint="Enter your group code" />
+                    {/* Textbox - User Name */}
+                    <MDBInput 
+                      hint="Enter your name"
+                      onChange={this.props.handleInputChange}
+                      value={this.props.joinGroupNameTxt}
+                      name="joinGroupNameTxt" 
+                    />
+
+                    {/* Textbox - User Address or current location */}
+                    <MDBInput 
+                      hint="Enter your location"
+                      onChange={this.props.handleInputChange}
+                      value={this.props.joinGroupLocationTxt}
+                      name="joinGroupLocationTxt"  
+                    />
+
+                    {/* Textbox - Group Code */}
+                    <MDBInput 
+                      hint="Enter Group Code"
+                      onChange={this.props.handleInputChange}
+                      value={this.props.joinGroupCodeTxt}
+                      name="joinGroupCodeTxt"  
+                    />
+
 
                     <MDBBtn
                       rounded
                       className="btn-purple"
-                      onClick={this.props.renderCreateGroup}
+                      onClick={this.props.submitCreateGroupPage}
                     >
-                      Join Group
+                      Join Your Group
                     </MDBBtn>
                   </MDBCol>
                 </MDBCol>
@@ -62,4 +71,4 @@ class CreateJoinGroup extends Component {
   }
 }
 
-export default CreateJoinGroup;
+export default CreateJoinPage;
