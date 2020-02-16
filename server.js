@@ -1,4 +1,3 @@
-
 /* Server Dependencies */
 const express = require("express"); //Load ExpressJS
 const routes = require("./routes"); //Load Routes from folder
@@ -33,4 +32,4 @@ mongoose.connect('mongodb+srv://admin:stWNC101@cluster0-ow1oo.gcp.mongodb.net/ha
     console.log("-----------End of Startup log------------\n")
   });
 })
-/* ---------------End of Startup Sequence--------------- */
+

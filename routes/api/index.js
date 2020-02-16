@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const test = require("./test");
+const db = require("./db");
+const general = require("./general");
 
-
-router.use("/test", test);
+router.use("/db", db);
+router.use("/general", general);
 
 module.exports = router;
