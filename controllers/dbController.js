@@ -64,5 +64,14 @@ module.exports = {
         res.json();
       }
     });
+  },
+
+  /* ------------------ Refreshing a group ------------------- */
+  refreshGroup: (req, res) => {
+    var getCode = req.body.code;
+
+    Users.find({ code: getCode }, function (err, docs) {
+      res.json(docs);
+    });
   }
 };
