@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainApp from "./components/MainApp/MainApp";
 
 class App extends Component {
@@ -11,8 +11,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/">
             <MainApp />

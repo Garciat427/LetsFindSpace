@@ -1,27 +1,16 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import {
-  MDBCollapse,
   MDBInput,
   MDBMask,
   MDBRow,
   MDBCol,
   MDBBtn,
   MDBView,
-  MDBContainer,
-  MDBFormInline
+  MDBContainer
 } from "mdbreact";
 
 class CreateGroupPage extends Component {
   render() {
-    const navStyle = { marginTop: "4rem" };
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.handleTogglerClick}
-      />
-    );
     return (
       <>
         <MDBView
@@ -35,17 +24,31 @@ class CreateGroupPage extends Component {
                     className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-white"
                     style={{ textShadow: "1px 1px 5px gray" }}
                   >
-                    Create Group Page
+                    Create Group
                   </h1>
 
                   <MDBCol md="4" className="mx-auto">
-                    <MDBInput hint="Enter your name" />
-                    <MDBInput hint="Enter your location" />
+                    {/* Textbox - User Name */}
+                    <MDBInput 
+                      hint="Enter your name"
+                      onChange={this.props.handleInputChange}
+                      value={this.props.createGroupNameTxt}
+                      name="createGroupNameTxt" 
+                    />
+
+                    {/* Textbox - User Address or current location */}
+                    <MDBInput 
+                      hint="Enter your location"
+                      onChange={this.props.handleInputChange}
+                      value={this.props.createGroupLocationTxt}
+                      name="createGroupLocationTxt"  
+                    />
+
 
                     <MDBBtn
                       rounded
                       className="btn-purple"
-                      onClick={this.props.renderCreateGroup}
+                      onClick={this.props.submitCreateGroupPage}
                     >
                       Create Group
                     </MDBBtn>
