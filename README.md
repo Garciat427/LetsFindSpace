@@ -1,10 +1,12 @@
-# Create React Express App
+# Lets Find Space
 
-## About This Boilerplate
+## About Application
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Lets Find Space is a web application that allows users to create and join groups so that they can meet in a location that is most optimized and efficient in terms of physical distance between users in real life. The idea of this application is most suitable when we have an event that is hosted based on the demographics of its attendants.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+This application operates on Node.js for backend integrated with MongoDB and React for frontend. It uses advanced Geocoding and place-finding based on a user's current location through various APIs offered by Google Maps Platform.
+
+The optimized meeting location is calculated through the use of algebraic and geometric formulas and then returned back to Google's API which finds the most suitable meeting place based on users' preferences (Coffee Shops, Restaurants, etc..) 
 
 ## Starting the app locally
 
@@ -22,8 +24,10 @@ After both installations complete, run the following command in your terminal:
 npm start
 ```
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+Your app should now be running on <http://localhost:3000>.
 
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## Developers
+* [Viet Nguyen](https://github.com/viet-quocnguyen)
+* [Mohamed Moussa](https://github.com/MohamedMoussa1)
+* [Bassel Ashi](https://github.com/BasselAshi)
+* Troy Garcia (Current User)
