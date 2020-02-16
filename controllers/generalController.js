@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 module.exports = {
   /* ------------------ Customer Types (Get and Post) ------------------ */
   //Get CusType(Find all Types)
-  getCo: (req, res) => {
+  getMidpoint: (req, res) => {
     //console.log(req.body.test)
     //res.json({"test":true})
 

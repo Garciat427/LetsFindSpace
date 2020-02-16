@@ -6,11 +6,8 @@ const apiRoutes = require("./api");
 // API Routes (For MongoDB Routes)
 router.use("/api", apiRoutes);
 
-//Auth Routes
-//router.use("/auth", auth)
-
 // If no API routes are hit, send the React app
-router.use(function (req, res) {
+router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
