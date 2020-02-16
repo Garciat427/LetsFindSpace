@@ -10,7 +10,7 @@ import {
 } from "mdbreact";
 import gradientImg from "./gradient2.png"
 
-class CreateGroupPage extends Component {
+class JoinPage extends Component {
   render() {
     return (
       <>
@@ -22,10 +22,10 @@ class CreateGroupPage extends Component {
               <MDBRow>
                 <MDBCol md="12" className="mb-4 text-center">
                   <h1
-                    className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-Black"
+                    className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-black"
                     style={{ textShadow: "1px 1px 5px gray" }}
                   >
-                    Create Group
+                    Join Group
                   </h1>
 
                   <MDBCol md="4" className="mx-auto">
@@ -33,25 +33,33 @@ class CreateGroupPage extends Component {
                     <MDBInput 
                       hint="Enter your name"
                       onChange={this.props.handleInputChange}
-                      value={this.props.createGroupNameTxt}
-                      name="createGroupNameTxt" 
+                      value={this.props.joinGroupNameTxt}
+                      name="joinGroupNameTxt" 
                     />
 
                     {/* Textbox - User Address or current location */}
                     <MDBInput 
                       hint="Enter your location"
                       onChange={this.props.handleInputChange}
-                      value={this.props.createGroupLocationTxt}
-                      name="createGroupLocationTxt"  
+                      value={this.props.joinGroupLocationTxt}
+                      name="joinGroupLocationTxt"  
+                    />
+
+                    {/* Textbox - Group Code */}
+                    <MDBInput 
+                      hint="Enter Group Code"
+                      onChange={this.props.handleInputChange}
+                      value={this.props.joinGroupCodeTxt}
+                      name="joinGroupCodeTxt"  
                     />
 
 
                     <MDBBtn
                       rounded
                       className="btn-purple"
-                      onClick={this.props.submitCreateGroupPage}
+                      onClick={this.props.submitJoinGroupPage}
                     >
-                      Create Group
+                      Join Your Group
                     </MDBBtn>
                   </MDBCol>
                 </MDBCol>
@@ -64,4 +72,4 @@ class CreateGroupPage extends Component {
   }
 }
 
-export default CreateGroupPage;
+export default JoinPage;

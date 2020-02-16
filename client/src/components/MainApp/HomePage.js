@@ -1,50 +1,47 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import {
-  MDBCollapse,
   MDBMask,
   MDBRow,
   MDBCol,
   MDBBtn,
   MDBView,
   MDBContainer,
-  MDBFormInline
+  MDBAnimation
 } from "mdbreact";
+import gradientImg from "./gradient2.png"
+import logo from "./logo.png"
 
 class Home extends Component {
   render() {
-    const navStyle = { marginTop: "4rem" };
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.handleTogglerClick}
-      />
-    );
     return (
       <>
         <MDBView
-          src={`https://mdbootstrap.com/img/Photos/Others/gradient2.png`}
+          src={gradientImg}
         >
           <MDBMask className="rgba-purple-slight d-flex justify-content-center align-items-center">
             <MDBContainer>
               <MDBRow>
+                <MDBCol md="3" />
+                <MDBCol md="6">
+                  <MDBAnimation type="fadeInDown">
+                    <img src={logo} className="img-fluid " />
+                  </MDBAnimation>
+                </MDBCol>
+                <MDBCol md="3" />
+              </MDBRow>
+
+              <MDBRow>
                 <MDBCol md="12" className="mb-4 text-center">
-                  <h1
-                    className="display-4 font-weight-bold mb-0 pt-md-5 pt-5 text-white"
-                    style={{ textShadow: "1px 1px 5px gray" }}
-                  >
-                    Meetup.Space
-                  </h1>
-
-                  <h5 className="pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5">
+                <MDBAnimation type="fadeInDown" delay="1s">
+                  <h5 className=" pt-sm-2 pb-md-5 pb-sm-3 pb-5">
                     {" "}
-                    Meet Me Halfway{" "}
+                    The fair way to plan meetings.{" "}
                   </h5>
-
+                  </MDBAnimation>
+                  <MDBAnimation type="fadeInUp" delay="1.5s">
                   <MDBBtn
                     rounded
-                    className="btn-purple"
+                    gradient="purple"
                     onClick={this.props.renderCreateGroup}
                   >
                     Create Group
@@ -52,12 +49,13 @@ class Home extends Component {
 
                   <MDBBtn
                     outline
-                    color="purple"
+                    gradient="blue"
                     rounded
                     onClick={this.props.renderJoinGroup}
                   >
                     Join Group
                   </MDBBtn>
+                  </MDBAnimation>
                 </MDBCol>
               </MDBRow>
             </MDBContainer>
